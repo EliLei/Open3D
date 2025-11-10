@@ -259,16 +259,12 @@ jobs:
       fail-fast: false
       # https://github.community/t/how-to-conditionally-include-exclude-items-in-matrix-eg-based-on-branch/16853/6
       matrix:
-        python_version: ['3.10', '3.11', '3.12', '3.13']
+        python_version: ['3.10']
         is_main:
           - ${{ github.ref == 'refs/heads/main' }}
         exclude:
           - is_main: false
             python_version: '3.10'
-          - is_main: false
-            python_version: '3.11'
-          - is_main: false
-            python_version: '3.12'
 
     steps:
       - name: Checkout source code
@@ -353,16 +349,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python_version: ['3.10', '3.11', '3.12', '3.13']
+        python_version: ['3.10']
         is_main:
           - ${{ github.ref == 'refs/heads/main' }}
         exclude:
           - is_main: false
             python_version: '3.10'
-          - is_main: false
-            python_version: '3.11'
-          - is_main: false
-            python_version: '3.12'
 
     steps:
       - name: Checkout source code

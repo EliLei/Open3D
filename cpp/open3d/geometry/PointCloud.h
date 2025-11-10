@@ -284,7 +284,7 @@ public:
     /// search_param The KDTree search parameters for neighborhood search.
     static std::vector<Eigen::Matrix3d> EstimatePerPointCovariances(
             const PointCloud &input,
-            const KDTreeSearchParam &search_param = KDTreeSearchParamKNN());
+            const KDTreeSearchParam &search_param = KDTreeSearchParamKNN(), size_t min_k=3);
 
     /// \brief Function to compute the covariance matrix for each point of a
     /// point cloud.
@@ -293,7 +293,7 @@ public:
     /// \param search_param The KDTree search parameters for neighborhood
     /// search.
     void EstimateCovariances(
-            const KDTreeSearchParam &search_param = KDTreeSearchParamKNN());
+            const KDTreeSearchParam &search_param = KDTreeSearchParamKNN(), size_t min_k=3);
 
     /// Function to compute the mean and covariance matrix
     /// of a point cloud.

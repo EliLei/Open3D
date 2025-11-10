@@ -162,11 +162,11 @@ void pybind_pointcloud_definitions(py::module &m) {
                     "Static function to compute the covariance matrix for "
                     "each "
                     "point in the given point cloud, doesn't change the input",
-                    "input"_a, "search_param"_a = KDTreeSearchParamKNN())
+                    "input"_a, "search_param"_a = KDTreeSearchParamKNN(), "min_k"_a = 3)
             .def("estimate_covariances", &PointCloud::EstimateCovariances,
                  "Function to compute the covariance matrix for each point "
                  "in the point cloud",
-                 "search_param"_a = KDTreeSearchParamKNN())
+                 "search_param"_a = KDTreeSearchParamKNN(), "min_k"_a = 3)
             .def("compute_mean_and_covariance",
                  &PointCloud::ComputeMeanAndCovariance,
                  "Function to compute the mean and covariance matrix of a "
@@ -347,11 +347,15 @@ camera. Given depth value d at (u, v) image coordinate, the corresponding 3d poi
             m, "PointCloud", "estimate_point_covariances",
             {{"input", "The input point cloud."},
              {"search_param",
-              "The KDTree search parameters for neighborhood search."}});
+              "The KDTree search parameters for neighborhood search."},
+          {"min_k",
+              "min_k."}});
     docstring::ClassMethodDocInject(
             m, "PointCloud", "estimate_covariances",
             {{"search_param",
-              "The KDTree search parameters for neighborhood search."}});
+              "The KDTree search parameters for neighborhood search."},
+          {"min_k",
+              "min_k."}});
     docstring::ClassMethodDocInject(m, "PointCloud",
                                     "compute_mean_and_covariance");
     docstring::ClassMethodDocInject(m, "PointCloud",
