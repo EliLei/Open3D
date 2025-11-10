@@ -662,7 +662,8 @@ PointCloud::RemoveStatisticalOutliers(size_t nb_neighbors,
 
 std::vector<Eigen::Matrix3d> PointCloud::EstimatePerPointCovariances(
         const PointCloud &input,
-        const KDTreeSearchParam &search_param /* = KDTreeSearchParamKNN()*/, size_t min_k) {
+        const KDTreeSearchParam &search_param /* = KDTreeSearchParamKNN()*/, 
+        size_t min_k) {
     const auto &points = input.points_;
     std::vector<Eigen::Matrix3d> covariances;
     covariances.resize(points.size());
@@ -687,7 +688,8 @@ std::vector<Eigen::Matrix3d> PointCloud::EstimatePerPointCovariances(
     return covariances;
 }
 void PointCloud::EstimateCovariances(
-        const KDTreeSearchParam &search_param /* = KDTreeSearchParamKNN()*/, size_t min_k) {
+        const KDTreeSearchParam &search_param /* = KDTreeSearchParamKNN()*/, 
+        size_t min_k) {
     this->covariances_ = EstimatePerPointCovariances(*this, search_param, min_k);
 }
 
